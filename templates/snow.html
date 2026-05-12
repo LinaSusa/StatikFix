@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snow Load</title>
+</head>
+<body>
+
+<h1>Snow Load Calculation</h1>
+
+<p>
+Simplified determination of characteristic roof snow load.<br>
+This is <strong>not</strong> a load-bearing structural analysis.
+</p>
+
+<form method="post">
+    <label>
+        Ground snow load s<sub>k</sub> [kN/m²]:
+        <input type="number" step="0.1" name="ground_snow_load" required>
+    </label>
+    <br><br>
+
+    <label>
+        Roof pitch [°]:
+        <input type="number" step="1" name="roof_pitch" required>
+    </label>
+    <br><br>
+
+    <button type="submit">Calculate</button>
+</form>
+
+{% if result %}
+<hr>
+<h2>Result</h2>
+
+<p>Shape coefficient μ = {{ '%.2f' % result['mu'] }}</p>
+
+<p>
+Characteristic snow load<br>
+<strong>
+    s<sub>k</sub> = {{ '%.2f' % result['s'] }} kN/m²
+</strong>
+</p>
+
+<h3>Formula used</h3>
+<p>
+s<sub>k</sub> = μ · C<sub>e</sub> · C<sub>t</sub> · s<sub>ground</sub>
+</p>
+{% endif %}
+
+<p><a href="/">Back to start</a></p>
+
+</body>
+</html>
